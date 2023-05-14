@@ -1,0 +1,81 @@
+{% extends 'nav.html' %}
+{% block  content %}
+  
+    <section class="shop spad">
+        <div class="container  ">
+         
+            {% block input %}
+            {% endblock%}
+                <div class="col-lg-12">
+                    <div class="shop__product__option">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__left">
+                                    {% if nbs > 0 %}
+                                    <p>{{nbs}} Resultat</p>
+                                    {% else %}
+                                    <p> No Result</p>
+                                    {% endif%}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for tel in phones %}
+                        {% if not tel %}
+            <div class="loader"></div>
+           {% else %}
+                            
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="card mb-5">
+                                <div class="card-details">
+                               
+                                <div   class="product__item__pic set-bg product__item__pic--small" style="background-image: url('{{tel.image}}');"
+                                class="product__item__pic set-bg" data-setbg="{{tel.link}}">
+                                    <ul class="product__hover">
+
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                  <a href="/AdemTech/phone{{tel.link}}"><h6>{{tel.nom}}</h6></a>  
+                                    
+                                    <h5>{{tel.prix}}</h5>
+                                   
+                                </div>
+                            </div>
+                            <a class="card-button" href="/AdemTech/phone{{tel.link}}">More info</a>
+                          </div>
+                    </div>
+                        {%endif%}   
+                
+                        {% endfor %}             
+                    </div>
+                    
+                                <nav aria-label="Page navigation example ">
+                                    <ul class="inline-flex -space-x-px bg-dark">
+                                    
+                                        {% for p in Pgs %}
+                                       
+                                        <li>
+                                           <a   href='/AdemTech/phone?page={{p}}&max={{max}}&category={{cat}}'   class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">{{p}}</a>
+
+                                         </li>
+                                         
+                                         {% endfor %}
+                                       
+                                      
+                                    </ul>
+                                  </nav>
+
+                </div>
+            </div>
+        </div>
+    </section>
+  
+</div>
+
+
+{% endblock %}
